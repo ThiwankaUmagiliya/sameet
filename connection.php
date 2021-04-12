@@ -52,7 +52,7 @@ require __DIR__ . '/vendor/autoload.php';
 function getClient()
 {
     $gClient = new Google_Client();
-    $gClient->setApplicationName('Student Association Meetings');
+    $gClient->setApplicationName('Test Project 01');
     $gClient->setScopes(Google_Service_Calendar::CALENDAR);
     $gClient->setAuthConfig('client_secret.json');
     $gClient->setAccessType('offline');
@@ -77,7 +77,7 @@ function getClient()
             // Request authorization from the user.
             if(!browserCredentials()) {
                 $authUrl = $gClient->createAuthUrl();
-                return "<p style='color:white;'><b>Sign In with Google to use this service!</b></p><a href='$authUrl'><button class='button' style='vertical-align:middle'><i class='fa fa-google' style='padding:0px 20px 5px 5px'></i><span> Sign In </span></button></a>";
+                return "<p style='color:white;'><b>Sign In with Google to use this service! [SLiiT Accounts Only]</b></p><a href='$authUrl'><button class='button' style='vertical-align:middle'><i class='fa fa-google' style='padding:0px 20px 5px 5px'></i><span> Sign In </span></button></a>";
             }
             $authCode = $_GET['code'];
             

@@ -1,4 +1,11 @@
 <!doctype html>
+<?php
+		$userTokenPath = 'token.json';
+		
+        if(isset($_POST['logout']) && file_exists($userTokenPath)) {
+            unlink("token.json");
+		}
+?>
 <html lang="en">
 	<head>
     
@@ -11,8 +18,27 @@
     <link rel="stylesheet" href="css/tab.css">
 	<link rel="icon" type="image/png" href="images/icon.png"/>
     <title>S A</title>
+	
+<script>
+function startTime() {
+  var today = new Date();
+  var h = today.getHours();
+  var m = today.getMinutes();
+  var s = today.getSeconds();
+  m = checkTime(m);
+  s = checkTime(s);
+  document.getElementById('timenow').innerHTML =
+  h + ":" + m + ":" + s;
+  var t = setTimeout(startTime, 500);
+}
+function checkTime(i) {
+  if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+  return i;
+}
+</script>
+
 	</head>
-<body style="margin:0 10%;padding:0 10px;">
+<body style="margin:0 10%;padding:0 10px;" onload="startTime()">
  
 	<div class="jumbotron jumbotron-fluid" style="padding-bottom:0px;padding-top:10px;margin-bottom:0px;">
 		<div class="container">
@@ -21,19 +47,10 @@
 			<div class="col-sm-2">
 				<a href="index.php"><img class="img-fluid" src="images/logo.png" /></a> 
 			</div>
-			<div class="col-sm-7">
+			<div class="col-sm-8">
 				<h1 class="text-center">Student Association Meetings (SAM)</h1>
 			</div>
-			<div class="col-sm-3">
-                <!--display date and time-->
-				<h5 class="text-right" 	id="date"></h5>
-                <h5 class="text-right" 	id="time"></h5>
-                <script>
-                var dt = new Date();
-                document.getElementById("date").innerHTML = dt.toLocaleDateString();
-                document.getElementById("time").innerHTML = dt.toLocaleTimeString();
-                </script>
-				
+			<div class="col-sm-2">
 			</div>
 		</div>	
 		</div>
@@ -56,9 +73,20 @@
 	</div>
         
     <!-- footer -->
-	<div class="text-center" style="background-color:#808080;color:#ffffff;padding:20px 0;">
-		<p><b><i>Powered by </i>S A<i> Team IT</i></b></p>
-	</div>
+	
+		<div class="text-center" style="background-color:#808080;color:#ffffff;padding:20px 0;">
+			<!--display date and time-->
+				
+                <h5 id="timenow"></h5>
+				<h5 id="date"></h5>
+				<script>
+                var dt = new Date();
+                document.getElementById("date").innerHTML = dt.toLocaleDateString();
+                </script>
+				
+				<p><b><i>Powered by </i>S A<i> Team IT</i></b></p>
+		</div>
+	
  </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

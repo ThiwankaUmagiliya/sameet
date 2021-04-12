@@ -1,5 +1,11 @@
 <div class="container">
 		
+			<div class="text-right">
+				<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+				<button id="logout" name="logout" type="submit" class="btn btn-primary btn-lg">Logout</button>
+				</form>
+			</div>
+						
 			<div class="tab-pane active p-3" id="l1" role="tabpanel">
 				<h3 style='color:#ffff00;'>Upcoming Meetings</h3>
 					<ul class="list-group">
