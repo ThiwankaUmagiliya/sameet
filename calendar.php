@@ -30,7 +30,7 @@ $gEvent = new Google_Service_Calendar_Event(array(
         $gEvent = $gService->events->insert($gCalendarId, $gEvent);
         echo '<script type="text/javascript">';
         echo ' alert("The meeting is successfully appended to your Google calendar!");'; 
-        echo 'window.location.href = "https://sameet.heroku.com";';
+        echo 'window.location.href = "https://sameet.herokuapp.com";';
         echo '</script>';
 
 ?>        
